@@ -14,7 +14,7 @@ struct Calculation {
     int result;
 };
 
-// function prototypes/ declaration for the arithmetic operations
+// function prototypes for the arithmetic operations
 int sum(int n1, int n2);
 int dif(int n1, int n2);
 int prod(int n1, int n2);
