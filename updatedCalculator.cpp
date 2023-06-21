@@ -1,9 +1,8 @@
 // CALCULATOR
-/* with input validation + error handling
-   array + pointer + struc (new)*/
+// with input validation + error handling array + pointer + struc (new)
 
 #include <iostream> 
-#include <limits> // handles invalid input
+#include <limits> 
 using namespace std;
 
 // struct that holds necessary variables and functions related to the calculator's operation
