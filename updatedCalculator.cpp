@@ -47,11 +47,10 @@ int main() {
 // declaration of variables
     int n1, n2; 
     char opt, back; 
-    const int limit = 100; // defines the max size of the calculation history
-    Calculation history[limit]; // array of 'Calculation' structs for storing the calculation history
-    int history_size = 0; // keeps track of the number of calculations stored
+    const int limit = 100; 
+    Calculation history[limit]; 
+    int history_size = 0; 
 
-// loop that allows the user to perform calculations repeatedly
     do {
         cout << " ======================================" << endl;
         cout << "               CALCULATOR              " << endl;
@@ -100,12 +99,11 @@ int main() {
         history[history_size] = calc;
         history_size++;
 
-        if (history_size > 0) { //display calculation history
+        if (history_size > 0) {
             cout << endl << endl << " ======================================" << endl;
             cout << "                HISTORY            " << endl;
             cout << " ======================================" << endl;
            
-            // iterates over the history array
             for (int i = 0; i < history_size; i++) {
                 cout << endl <<" [ " << history[i].num1 << history[i].operatorSymbol << history[i].num2 << "=" << history[i].result <<" ]"<< endl;
                
