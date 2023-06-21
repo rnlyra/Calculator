@@ -1,11 +1,11 @@
 // CALCULATOR
-// with input validation + error handling array + pointer + struc (new)
+// with input validation + error handling + array + pointer + struct (new)
 
 #include <iostream> 
 #include <limits> 
 using namespace std;
 
-// struct that holds necessary variables and functions related to the calculator's operation
+// structure that holds necessary variables related to the operation
 struct Calculation {
     int num1;
     int num2;
@@ -13,14 +13,12 @@ struct Calculation {
     int result;
 };
 
-// function prototypes for the arithmetic operations
 int sum(int n1, int n2);
 int dif(int n1, int n2);
 int prod(int n1, int n2);
 int quo(int n1, int n2);
 
-/* definition of functions for the arithmetic operations;
-each function performs the corresponding operation */
+// definition of functions 
 int sum(int n1, int n2, int& ans) {
     ans = n1 + n2;
     return ans;
@@ -49,13 +47,12 @@ int main() {
 // declaration of variables
     int n1, n2; 
     char opt, back; 
-    const int limit = 100; // defines the maximum size of the calculation history
+    const int limit = 100; // defines the max size of the calculation history
     Calculation history[limit]; // array of 'Calculation' structs for storing the calculation history
     int history_size = 0; // keeps track of the number of calculations stored
 
 // loop that allows the user to perform calculations repeatedly
     do {
-        // display the calculator title
         cout << " ======================================" << endl;
         cout << "               CALCULATOR              " << endl;
         cout << " ======================================" << endl;
@@ -65,8 +62,7 @@ int main() {
         cout << "--> ";
         cin >> n1 >> opt >> n2;
 
-        /* handle invalid input by checking if the input stream ('cin') has failed;
-        If the input is invalid, an error message is displayed, and the user is prompted to enter valid input again */
+        // handle invalid input 
         while (cin.fail()) {
             cout << endl << "Invalid input. Please try again (ex. 5+5): ";
             cin.clear();
@@ -75,8 +71,7 @@ int main() {
         }
         cout << endl;
 
-        /* perform the selected operation based on the 'opt'variable entered by the user;
-	it calls the corresponding operation and display the calculated result */
+        // perform the selected operation based on the value of 'opt'variable 
         int ans = 0;  
         switch (opt) {
             case '+':
@@ -95,23 +90,22 @@ int main() {
                 cout << "Answer: ";
         }
 
-        // new 'calculation' struct to store calculation in history
+        // new 'calculation' struct to store calculations in history
         Calculation calc;
         calc.num1 = n1;
         calc.num2 = n2;
         calc.operatorSymbol = opt;
         calc.result = ans;
-
+	
         history[history_size] = calc;
         history_size++;
 
-        if (history_size > 0) { // if there are calculations in the history/(history_size > 0), the code enters this loop to display the calculation history
-           
+        if (history_size > 0) { //display calculation history
             cout << endl << endl << " ======================================" << endl;
             cout << "                HISTORY            " << endl;
             cout << " ======================================" << endl;
            
-            //it iterates over the history array using this for loop and display the calculation's numbers (num1,num2), operator symbol, and result
+            // iterates over the history array
             for (int i = 0; i < history_size; i++) {
                 cout << endl <<" [ " << history[i].num1 << history[i].operatorSymbol << history[i].num2 << "=" << history[i].result <<" ]"<< endl;
                
@@ -123,12 +117,12 @@ int main() {
                 cout << history[i].result << "| Address = " << &history[i].result << endl;
             }
            
-            //determines whether the user wants to continue calculating or terminates the program
+            //determines whether to continue calculating or terminate the program
             cout << endl << endl << "Try again? [Y/N]: ";
             cin >> back;
             cout << endl << endl;
         }
-    } while (back == 'y' || back == 'Y');
+    } while (back == 'y' || back == 'Y'); //looping
 
     return 0;
 }
